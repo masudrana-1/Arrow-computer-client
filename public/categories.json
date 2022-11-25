@@ -1,14 +1,50 @@
 [
     {
-        "title": "Desktop Computer",
-        "img": "https://kwingy.com/wp-content/uploads/2022/07/DESKTOP.webp"
+        "title": "MSI GF63 Thin 10SCXR Core i5 10th Gen GTX 1650 4GB Graphics 15.6 FHD Gaming Laptop",
+        "img": "https://www.startech.com.bd/image/cache/catalog/laptop/msi/gf63-thin-10scsr/gf63-thin-10scsr-1-500x500.jpg",
+        "location": "Dhaka, Motijhil",
+        "resale price": "45000",
+        "original price": "81000",
+        "years of use": "1",
+        "post time": "1.10",
+        "seller name": "Morium",
+        "key features": {
+            "processor": "Core i5 10th Gen",
+            "motherboard": "",
+            "ram": "8GB 3200MHz",
+            "storage": "256 GB SSD + 1TB HDD"
+        }
     },
     {
-        "title": "Laptop",
-        "img": "https://www.cnet.com/a/img/resize/b9e66585cdf259a71344fddc53b04339e4e162fb/hub/2022/04/27/b796792b-5b34-4405-83eb-efc66371ee06/samsung-galaxy-book-2-pro-360-01.jpg?auto=webp&fit=crop&height=630&width=1200"
+        "title": "Toshiba Dynabook Satellite Pro C40-G-109 Celeron 5205U 14 HD Laptop",
+        "img": "https://www.startech.com.bd/image/cache/catalog/laptop/toshiba/satellite-pro-c40-g-109/satellite-pro-c40-g-109-01-500x500.webp",
+        "location": "",
+        "resale price": "15000",
+        "original price": "29000",
+        "years of use": "0.6",
+        "post time": "3.40",
+        "seller name": "Dhaka, Banani",
+        "key features": {
+            "processor": "Intel Celeron 5205U (2M Cache, 1.90 GHz)",
+            "motherboard": "",
+            "ram": "4GB 3200MHz",
+            "storage": "128GB SSD"
+        }
     },
     {
-        "title": "Desktop Computer",
-        "img": "https://images.unsplash.com/photo-1577375729078-820d5283031c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Y29tcHV0ZXIlMjBhY2Nlc3Nvcmllc3xlbnwwfHwwfHw%3D&w=1000&q=80"
+        "title": "Rapoo V500 PRO-87 Multi Mode Wireless Mechanical Gaming Keyboard",
+        "img": "https://www.startech.com.bd/image/cache/catalog/laptop/msi/gf63-thin-10scsr/gf63-thin-10scsr-1-500x500.jpg",
+        "location": "Dhaka, Motijhil",
+        "resale price": "45000",
+        "original price": "81000",
+        "years of use": "1",
+        "post time": "1.10",
+        "seller name": "Morium",
+        "key features": {
+            "processor": "Core i5 10th Gen",
+            "motherboard": "",
+            "ram": "8GB 3200MHz",
+            "storage": "256 GB SSD + 1TB HDD"
+        }
     }
 ]
