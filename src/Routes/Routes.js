@@ -9,6 +9,7 @@ import ErrorPage from "../Shared/ErrorPage/ErrorPage";
 import Home from "../Pages/Home/Home";
 import LogIn from "../Pages/LogIn/LogIn";
 import SignUp from "../Pages/SignUp/SignUp";
+import AllProducts from "../Pages/AllProducts/AllProducts";
 
 const router = createBrowserRouter([
     {
@@ -23,6 +24,11 @@ const router = createBrowserRouter([
             {
                 path: '/blogs',
                 element: <Blogs></Blogs>
+            },
+            {
+                path: '/products/:product_type',
+                element: <AllProducts></AllProducts>,
+                loader: ({ params }) => fetch(`http://localhost:5000/products/${params.product_type}`)
             },
             {
                 path: '/login',

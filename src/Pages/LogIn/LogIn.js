@@ -1,11 +1,12 @@
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
 
 const LogIn = () => {
 
-    const { signIn } = useContext(AuthContext);
+    const { signIn, googleSignIn } = useContext(AuthContext);
 
     const { register, formState: { errors }, handleSubmit } = useForm();
 
@@ -39,14 +40,30 @@ const LogIn = () => {
 
                 setLoginUserEmail(user.email);
 
-                // navigate(from, { replace: true });
+                navigate(from, { replace: true });
+
+                toast.success('Log In Successfully');
             })
             .catch(error => {
                 // console.error(error.message);
                 setLoginError(error.message);
+                toast.error('Something going wrong');
             })
     }
 
+
+    const signInWithGoogle = () => {
+        googleSignIn()
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                toast.success("SignUp successfully");
+                navigate(from, { replace: true });
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    }
 
     return (
         <div className='h-[600px] flex justify-center items-center'>
@@ -84,7 +101,7 @@ const LogIn = () => {
                 <p>New to Arrow Computer <Link to="/signup" className='text-primary'>Create a new account</Link></p>
                 <div className="divider">OR</div>
 
-                <button className='btn btn-outline w-full'>CONTINUE WITH GOOGLE</button>
+                <button onClick={signInWithGoogle} className='btn btn-outline w-full'>CONTINUE WITH GOOGLE</button>
             </div>
         </div>
     );

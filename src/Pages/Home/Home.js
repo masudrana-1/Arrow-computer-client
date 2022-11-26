@@ -15,7 +15,7 @@ const Home = () => {
             <div className='text-lg text-center my-6'>
                 {
                     user?.uid && <h1>
-                        "{user?.displayName ? user?.displayName : user?.email}" - Wellcome to Arrow Computer
+                        Hello "{user?.displayName ? user?.displayName : user?.email}" - Wellcome to Arrow Computer
                     </h1>
                 }
             </div>

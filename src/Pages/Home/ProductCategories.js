@@ -1,26 +1,27 @@
 // import { useQuery } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 import React, { useEffect, useState } from 'react';
 import Category from './Category';
 
 const ProductCategories = () => {
 
-    // const { data: categories = [] } = useQuery({
-    //     queryKey: ['categories'],
-    //     queryFn: async () => {
-    //         const res = await fetch('categories.json');
-    //         const data = await res.json();
-    //         return data;
-    //     }
-    // });
+    const { data: categories = [] } = useQuery({
+        queryKey: ['categories'],
+        queryFn: async () => {
+            const res = await fetch('http://localhost:5000/categories');
+            const data = await res.json();
+            return data;
+        }
+    });
 
-    const [categories, setCategories] = useState([]);
+    // const [categories, setCategories] = useState([]);
 
 
-    useEffect(() => {
-        fetch('http://localhost:5000/categories')
-            .then(res => res.json())
-            .then(data => setCategories(data))
-    }, [])
+    // useEffect(() => {
+    //     fetch('http://localhost:5000/categories')
+    //         .then(res => res.json())
+    //         .then(data => setCategories(data))
+    // }, [])
 
 
 
