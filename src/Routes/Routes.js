@@ -4,12 +4,15 @@ import Main from "../Layout/Main";
 import Blogs from "../Pages/Blogs/Blogs";
 import Admin from "../Pages/Dashboard/Admin/Admin";
 import Buyer from "../Pages/Dashboard/Buyer/Buyer";
-import Seller from "../Pages/Dashboard/Seller/Seller";
+import Seller from "../Pages/Dashboard/Seller/Seller/Seller";
 import ErrorPage from "../Shared/ErrorPage/ErrorPage";
 import Home from "../Pages/Home/Home";
 import LogIn from "../Pages/LogIn/LogIn";
 import SignUp from "../Pages/SignUp/SignUp";
 import AllProducts from "../Pages/AllProducts/AllProducts";
+import AddProduct from "../Pages/Dashboard/Seller/AddProducts/AddProduct";
+import Product from "../Pages/AllProducts/Product";
+import Products from "../Pages/Dashboard/Seller/Products/Products";
 
 const router = createBrowserRouter([
     {
@@ -52,6 +55,14 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/seller',
                 element: <Seller></Seller>
+            },
+            {
+                path: '/dashboard/seller/addproduct',
+                element: <AddProduct></AddProduct>
+            },
+            {
+                path: '/dashboard/seller/products',
+                element: <Products></Products>
             },
             {
                 path: '/dashboard/admin',

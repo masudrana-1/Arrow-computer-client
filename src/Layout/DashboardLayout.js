@@ -14,7 +14,6 @@ const DashboardLayout = () => {
 
                     <Outlet></Outlet>
 
-                    {/* <label htmlFor="dashboard-drawer" className="btn btn-primary drawer-button lg:hidden">Open drawer</label> */}
 
                 </div>
                 <div className="drawer-side">
@@ -24,13 +23,7 @@ const DashboardLayout = () => {
                         <li><Link className='text-lg' to='/dashboard'>Buyer</Link></li>
                         <li><Link className='text-lg' to='/dashboard/seller'>Seller</Link></li>
                         <li><Link className='text-lg' to='/dashboard/admin'>Admin</Link></li>
-                        {/* {
-                            isAdmin && <>
-                                <li><Link to='/dashboard/allusers'>All Users</Link></li>
-                                <li><Link to='/dashboard/adddoctor'>Add A Doctor</Link></li>
-                                <li><Link to='/dashboard/managedoctors'>Manage Doctors</Link></li>
-                            </>
-                        } */}
+
                     </ul>
 
                 </div>
