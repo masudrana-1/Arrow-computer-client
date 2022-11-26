@@ -11,7 +11,7 @@ import LogIn from "../Pages/LogIn/LogIn";
 import SignUp from "../Pages/SignUp/SignUp";
 import AllProducts from "../Pages/AllProducts/AllProducts";
 import AddProduct from "../Pages/Dashboard/Seller/AddProducts/AddProduct";
-import Product from "../Pages/AllProducts/Product";
+import Product from "../Pages/Product/Product";
 import Products from "../Pages/Dashboard/Seller/Products/Products";
 
 const router = createBrowserRouter([

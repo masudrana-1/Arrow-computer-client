@@ -1,6 +1,6 @@
 // import { useQuery } from '@tanstack/react-query';
 import { useQuery } from '@tanstack/react-query';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Category from './Category';
 
 const ProductCategories = () => {
@@ -13,15 +13,6 @@ const ProductCategories = () => {
             return data;
         }
     });
-
-    // const [categories, setCategories] = useState([]);
-
-
-    // useEffect(() => {
-    //     fetch('http://localhost:5000/categories')
-    //         .then(res => res.json())
-    //         .then(data => setCategories(data))
-    // }, [])
 
 
 
