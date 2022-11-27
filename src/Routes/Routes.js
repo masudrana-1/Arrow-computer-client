@@ -2,7 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import DashboardLayout from "../Layout/DashboardLayout";
 import Main from "../Layout/Main";
 import Blogs from "../Pages/Blogs/Blogs";
-import Admin from "../Pages/Dashboard/Admin/Admin";
+import Admin from "../Pages/Dashboard/Admin/Admin/Admin";
 import Buyer from "../Pages/Dashboard/Buyer/Buyer";
 import Seller from "../Pages/Dashboard/Seller/Seller/Seller";
 import ErrorPage from "../Shared/ErrorPage/ErrorPage";
@@ -13,6 +13,8 @@ import AllProducts from "../Pages/AllProducts/AllProducts";
 import AddProduct from "../Pages/Dashboard/Seller/AddProducts/AddProduct";
 import Product from "../Pages/Product/Product";
 import Products from "../Pages/Dashboard/Seller/Products/Products";
+import AllSeller from "../Pages/Dashboard/Admin/AllSeller/AllSeller";
+import AllBuyer from "../Pages/Dashboard/Admin/AllBuyer/AllBuyer";
 
 const router = createBrowserRouter([
     {
@@ -67,7 +69,15 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/admin',
                 element: <Admin></Admin>
-            }
+            },
+            {
+                path: '/dashboard/admin/seller',
+                element: <AllSeller></AllSeller>
+            },
+            {
+                path: '/dashboard/admin/buyer',
+                element: <AllBuyer></AllBuyer>
+            },
         ]
     }
 ])

@@ -38,17 +38,20 @@ const SignUp = () => {
                 toast.success("SignUp successfully");
                 navigate('/');
 
+                saveUser(data.name, data.email, data.role);
+
                 // update user info 
                 // const userInfo = {
-                //     displayName: data.name
+                //     displayName: data.name,
+                //     role: data.role
                 // }
 
                 // updateUser(userInfo)
                 //     .then(() => {
-                // saveUser(data.name, data.email);
+                //         saveUser(data.name, data.email, data.role);
 
-                // })
-                // .catch(error => console.error(error))
+                //     })
+                //     .catch(error => console.error(error));
             })
             .catch(error => {
                 // console.error(error.message);
@@ -56,24 +59,24 @@ const SignUp = () => {
             })
     }
 
-    // const saveUser = (name, email) => {
-    //     const user = { name, email };
+    const saveUser = (name, email, role) => {
+        const user = { name, email, role };
 
-    //     fetch('http://localhost:5000/users', {
-    //         method: 'POST',
-    //         headers: {
-    //             'content-type': 'application/json'
-    //         },
-    //         body: JSON.stringify(user)
-    //     })
-    //         .then(res => res.json())
-    //         .then(d => {
+        fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(d => {
 
-    //             if (d.acknowledged) {
-    //                 setCreatedUserEmail(user.email);
-    //             }
-    //         })
-    // }
+                if (d.acknowledged) {
+                    setCreatedUserEmail(user.email);
+                }
+            })
+    }
 
 
     const signInWithGoogle = () => {
@@ -123,8 +126,9 @@ const SignUp = () => {
                         <label className="label">
                             <span className="label-text">Select your role</span>
                         </label>
-                        <select className="select select-bordered w-full">
-                            <option disabled selected>Buyer</option>
+                        <select {...register("role", { required: "role is required" })}
+                            className="select select-bordered w-full ">
+                            <option selected>Buyer</option>
                             <option>Seller</option>
                         </select>
                     </div>

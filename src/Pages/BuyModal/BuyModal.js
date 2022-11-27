@@ -25,13 +25,13 @@ const BuyModal = ({ user, product, loading }) => {
                 <div className="modal-box relative">
                     <label htmlFor="buyModal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
                     <div className=' p-7 m-auto'>
-                        <h1 className='text-4xl'>Add A Product</h1>
+                        <h1 className='text-4xl text-center'>Buy this product</h1>
                         <form onSubmit={handleSubmit(handleBuy)}>
                             <div className="form-control w-full ">
                                 <label className="label">
                                     <span className="label-text">Name</span>
                                 </label>
-                                <input type="text" {...register("name", { required: "Name is required" })} className="input input-bordered w-full" defaultValue={user?.displayName} placeholder='your name' />
+                                <input type="text" {...register("name")} className="input input-bordered w-full" defaultValue={user?.displayName} placeholder='your name' />
 
                                 {/* error message  */}
                                 {errors.name && <p className='text-red-500'>{errors.name?.message}</p>}
@@ -44,6 +44,24 @@ const BuyModal = ({ user, product, loading }) => {
 
                                 {/* error message  */}
                                 {errors.email && <p className='text-red-500'>{errors.email?.message}</p>}
+                            </div>
+                            <div className="form-control w-full ">
+                                <label className="label">
+                                    <span className="label-text">Phone</span>
+                                </label>
+                                <input type="number" {...register("phone", { required: "phone number is required" })} className="input input-bordered w-full" />
+
+                                {/* error message  */}
+                                {errors.phone && <p className='text-red-500'>{errors.phone?.message}</p>}
+                            </div>
+                            <div className="form-control w-full ">
+                                <label className="label">
+                                    <span className="label-text">Meeting Date</span>
+                                </label>
+                                <input type="date" {...register("date", { required: "date is required" })} className="input input-bordered w-full" defaultValue={user?.email} />
+
+                                {/* error message  */}
+                                {errors.date && <p className='text-red-500'>{errors.date?.message}</p>}
                             </div>
                             <div className="form-control w-full ">
                                 <label className="label">
@@ -63,7 +81,7 @@ const BuyModal = ({ user, product, loading }) => {
                                 {/* error message  */}
                                 {errors.Price && <p className='text-red-500'>{errors.Price?.message}</p>}
                             </div>
-                            <input className='btn btn-primary w-full mt-4' value="Add a product" type="submit" />
+                            <input className='btn btn-primary w-full mt-4' value="buy" type="submit" />
                         </form>
                     </div>
                 </div>
