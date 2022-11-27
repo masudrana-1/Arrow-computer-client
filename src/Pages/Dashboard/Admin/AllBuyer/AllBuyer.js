@@ -1,14 +1,44 @@
-import React, { useEffect, useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
+import React from 'react';
+import toast from 'react-hot-toast';
 
 const AllBuyer = () => {
 
-    const [buyers, setBuyers] = useState();
+    // const [buyers, setBuyers] = useState();
 
-    useEffect(() => {
-        fetch('http://localhost:5000/users/Buyer')
+    // useEffect(() => {
+    //     fetch('http://localhost:5000/users/Buyer')
+    //         .then(res => res.json())
+    //         .then(data => setBuyers(data))
+    // }, [])
+
+    const { data: buyers = [], refetch, isLoading } = useQuery({
+        queryKey: ['buyers'],
+        queryFn: async () => {
+            const res = await fetch(`http://localhost:5000/users/Buyer`);
+            const data = await res.json();
+            return data
+        }
+    })
+
+
+    const handleDeleteBuyer = buyer => {
+        fetch(`http://localhost:5000/users/${buyer?._id}`, {
+            method: 'DELETE'
+            // headers: {
+            //     authorization: `bearer ${localStorage.getItem('accessToken')}`
+            // }
+        })
             .then(res => res.json())
-            .then(data => setBuyers(data))
-    }, [])
+            .then(data => {
+                if (data.deletedCount > 0) {
+                    refetch();
+                    toast.success(`${buyer?.name} deleted successfully`);
+                }
+            })
+    }
+
+
 
     return (
         <div>
@@ -27,12 +57,12 @@ const AllBuyer = () => {
                     <tbody>
                         {/* <!-- row 1 --> */}
                         {
-                            buyers?.map((buyer, i) => <tr>
+                            buyers?.map((buyer, i) => <tr key={buyer?._id}>
                                 <th>{i + 1}</th>
                                 <td>{buyer?.name}</td>
                                 <td>{buyer?.email}</td>
                                 <th>
-                                    <button className="btn btn-error btn-xs">Delete</button>
+                                    <button onClick={() => handleDeleteBuyer(buyer)} className="btn btn-error btn-xs">Delete</button>
                                 </th>
                             </tr>)
                         }

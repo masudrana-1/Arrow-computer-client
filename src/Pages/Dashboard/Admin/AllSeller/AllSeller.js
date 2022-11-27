@@ -1,14 +1,34 @@
-import React, { useEffect, useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
+import React from 'react';
+import toast from 'react-hot-toast';
 
 const AllSeller = () => {
 
-    const [buyers, setBuyers] = useState();
+    const { data: sellers = [], refetch, isLoading } = useQuery({
+        queryKey: ['sellers'],
+        queryFn: async () => {
+            const res = await fetch(`http://localhost:5000/users/Seller`);
+            const data = await res.json();
+            return data
+        }
+    })
 
-    useEffect(() => {
-        fetch('http://localhost:5000/users/Seller')
+
+    const handleDeleteSeller = seller => {
+        fetch(`http://localhost:5000/users/${seller?._id}`, {
+            method: 'DELETE'
+            // headers: {
+            //     authorization: `bearer ${localStorage.getItem('accessToken')}`
+            // }
+        })
             .then(res => res.json())
-            .then(data => setBuyers(data))
-    }, [])
+            .then(data => {
+                if (data.deletedCount > 0) {
+                    refetch();
+                    toast.success(`${seller?.name} deleted successfully`);
+                }
+            })
+    }
 
 
     return (
@@ -28,12 +48,12 @@ const AllSeller = () => {
                     <tbody>
                         {/* <!-- row 1 --> */}
                         {
-                            buyers?.map((buyer, i) => <tr>
+                            sellers?.map((seller, i) => <tr key={seller?._id}>
                                 <th>{i + 1}</th>
-                                <td>{buyer?.name}</td>
-                                <td>{buyer?.email}</td>
+                                <td>{seller?.name}</td>
+                                <td>{seller?.email}</td>
                                 <th>
-                                    <button className="btn btn-error btn-xs">Delete</button>
+                                    <button onClick={() => handleDeleteSeller(seller)} className="btn btn-error btn-xs">Delete</button>
                                 </th>
                             </tr>)
                         }
