@@ -1,22 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import { Link, Outlet, useLoaderData } from 'react-router-dom';
-import AdminLink from './AdminLink';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Admin = () => {
-
-    const [users, setUsers] = useState();
-
-    useEffect(() => {
-        fetch('http://localhost:5000/users')
-            .then(res => res.json())
-            .then(data => setUsers(data))
-    }, [])
-
     return (
         <div>
-            {
-                users?.map(user => <AdminLink key={user?._id} user={user}></AdminLink>)
-            }
+            <div>
+                <Link className='btn btn-ghost mb-5' to='/dashboard/admin/seller'>All Seller</Link>
+            </div>
+            <Link className='btn btn-ghost ' to='/dashboard/admin/buyer'>All Buyer</Link>
+
         </div>
 
 

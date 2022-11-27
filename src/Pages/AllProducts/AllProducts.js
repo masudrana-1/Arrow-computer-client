@@ -8,7 +8,7 @@ const AllProducts = () => {
 
     const { user, loading } = useContext(AuthContext);
 
-    const [seletedProduct, setSelectedProduct] = useState();
+    const [seletedProduct, setSelectedProduct] = useState(null);
 
 
     const products = useLoaderData();
@@ -31,6 +31,7 @@ const AllProducts = () => {
                 <BuyModal
                     user={user}
                     product={seletedProduct}
+                    setSelectedProduct={setSelectedProduct}
                     loading={loading}
                 >
 

@@ -1,9 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
+import toast from 'react-hot-toast';
 
 const Products = () => {
 
-    const { data: products = [] } = useQuery({
+    const { data: products = [], refetch } = useQuery({
         queryKey: ['categories'],
         queryFn: async () => {
             const res = await fetch('http://localhost:5000/products');
@@ -11,6 +12,40 @@ const Products = () => {
             return data;
         }
     });
+
+
+    const handleDeleteProduct = product => {
+        // console.log(doctor)
+        fetch(`http://localhost:5000/products/${product?.title}`, {
+            method: 'DELETE'
+            // headers: {
+            //     authorization: `bearer ${localStorage.getItem('accessToken')}`
+            // }
+        })
+            .then(res => res.json())
+            .then(data => {
+                // console.log(data)
+                if (data.deletedCount > 0) {
+                    refetch();
+                    toast.success(`${product?.product_title} deleted successfully`);
+                }
+            })
+
+        fetch(`http://localhost:5000/productCart/${product?.title}`, {
+            method: 'DELETE'
+            // headers: {
+            //     authorization: `bearer ${localStorage.getItem('accessToken')}`
+            // }
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.deletedCount > 0) {
+                    refetch();
+                    // toast.success(`${product?.title} deleted successfully`);
+                }
+            })
+
+    }
 
     return (
         <div>
@@ -36,37 +71,35 @@ const Products = () => {
                         <tbody>
                             {/* <!-- row 1 --> */}
                             {
-                                products.map((product, i) => <>
-                                    <tr>
-                                        <th>
-                                            {i + 1}
-                                        </th>
-                                        <td>
-                                            <div className="flex items-center space-x-3">
-                                                <div className="avatar">
-                                                    <div className="mask mask-squircle w-12 h-12">
-                                                        <img src={product?.img} alt="Avatar Tailwind CSS Component" />
-                                                    </div>
-                                                </div>
-                                                <div>
-                                                    <div className="font-bold">{product?.title}</div>
-                                                    <div className="text-sm opacity-50">{product?.location}</div>
+                                products.map((product, i) => <tr key={i}>
+                                    <th>
+                                        {i + 1}
+                                    </th>
+                                    <td>
+                                        <div className="flex items-center space-x-3">
+                                            <div className="avatar">
+                                                <div className="mask mask-squircle w-12 h-12">
+                                                    <img src={product?.img} alt="Avatar Tailwind CSS Component" />
                                                 </div>
                                             </div>
-                                        </td>
-                                        <td>
-                                            {product?.resale_price}
-                                            <br />
-                                            <span className="badge badge-ghost badge-sm">
-                                                {product?.original_price}
-                                            </span>
-                                        </td>
-                                        <td>{product?.product_type}</td>
-                                        <th>
-                                            <button className="btn btn-error btn-xs">Delete</button>
-                                        </th>
-                                    </tr>
-                                </>)
+                                            <div>
+                                                <div className="font-bold">{product?.title}</div>
+                                                <div className="text-sm opacity-50">{product?.location}</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        {product?.resale_price}
+                                        <br />
+                                        <span className="badge badge-ghost badge-sm">
+                                            {product?.original_price}
+                                        </span>
+                                    </td>
+                                    <td>{product?.product_type}</td>
+                                    <th>
+                                        <button onClick={() => handleDeleteProduct(product)} className="btn btn-error btn-xs">Delete</button>
+                                    </th>
+                                </tr>)
                             }
                         </tbody>
 

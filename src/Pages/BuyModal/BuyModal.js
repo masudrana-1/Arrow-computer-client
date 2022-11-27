@@ -1,16 +1,44 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 
-const BuyModal = ({ user, product, loading }) => {
+const BuyModal = ({ user, product, loading, setSelectedProduct }) => {
 
 
     const { register, formState: { errors }, handleSubmit } = useForm();
 
 
-    const handleBuy = () => {
-        if (loading) {
-            return <progress className="progress w-56"></progress>
+    const handleBuy = (data) => {
+        const addToCart = {
+            name: data.name,
+            email: user.email,
+            phone: data.phone,
+            date: data.date,
+            title: product.title,
+            price: product.resale_price,
+            img: product?.img
         }
+
+        fetch('http://localhost:5000/productCart', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(addToCart)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+
+                if (data.acknowledged) {
+                    setSelectedProduct(null);
+                    toast.success('Booking Confirm, please go to order page and payment for this product');
+                    // refetch();
+                }
+                else {
+                    // toast.error(data.message);
+                }
+            })
     }
 
 
@@ -76,10 +104,10 @@ const BuyModal = ({ user, product, loading }) => {
                                 <label className="label">
                                     <span className="label-text">Price</span>
                                 </label>
-                                <input type="number" {...register("Price")} className="input input-bordered w-full" defaultValue={product?.resale_price} />
+                                <input type="number" {...register("price")} className="input input-bordered w-full" defaultValue={product?.resale_price} />
 
                                 {/* error message  */}
-                                {errors.Price && <p className='text-red-500'>{errors.Price?.message}</p>}
+                                {errors.price && <p className='text-red-500'>{errors.price?.message}</p>}
                             </div>
                             <input className='btn btn-primary w-full mt-4' value="buy" type="submit" />
                         </form>
