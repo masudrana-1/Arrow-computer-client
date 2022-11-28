@@ -17,6 +17,9 @@ import AllBuyer from "../../Pages/Dashboard/Admin/AllBuyer/AllBuyer";
 import Payment from "../../Pages/Dashboard/Payment/Payment";
 import Buyer from "../../Pages/Dashboard/Buyer/Buyer/Buyer";
 import Wishlist from "../../Pages/Dashboard/Buyer/Wishlist/Wishlist";
+import BuyerRoute from "./BuyerRoute/BuyerRoute";
+import SellerRoute from "./SellerRoute/SellerRoute";
+import AdminRoute from "./AdminRoute/AdminRoute";
 
 const router = createBrowserRouter([
     {
@@ -53,7 +56,7 @@ const router = createBrowserRouter([
         element: <DashboardLayout></DashboardLayout>,
         children: [
             {
-                path: '/dashboard',
+                path: '/dashboard/buyer',
                 element: <Buyer></Buyer>
             },
             {
@@ -65,9 +68,9 @@ const router = createBrowserRouter([
                 element: <Wishlist></Wishlist>
             },
             {
-                path: '/dashboard/payment/:title',
+                path: '/dashboard/payment/:id',
                 element: <Payment></Payment>,
-                // loader: ({ params }) => fetch(`http://localhost:5000/productCart/${params.title}`)
+                loader: ({ params }) => fetch(`http://localhost:5000/productCart/${params.id}`)
             },
             {
                 path: '/dashboard/seller',
@@ -83,7 +86,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/dashboard/admin',
-                element: <Admin></Admin>
+                element: <AdminRoute><Admin></Admin></AdminRoute>
             },
             {
                 path: '/dashboard/admin/seller',
