@@ -20,6 +20,7 @@ const Navbar = () => {
     return (
         <div className="navbar bg-base-100">
             <div className="flex-1">
+                <img className='w-10 h-10' src="https://png.pngtree.com/png-vector/20220916/ourmid/pngtree-creative-super-computer-logo-desgin-png-image_6181327.png" alt="" />
                 <Link to='/' className="font-bold btn btn-ghost text-2xl">ARROW-COMPUTER</Link>
             </div>
             <div className="flex-none">

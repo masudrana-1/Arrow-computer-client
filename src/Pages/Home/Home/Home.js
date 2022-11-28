@@ -1,7 +1,8 @@
 import React, { useContext } from 'react';
-import { AuthContext } from '../../context/AuthProvider';
-import Carousel from './Carousel';
-import ProductCategories from './ProductCategories';
+import { AuthContext } from '../../../context/AuthProvider';
+import Advertised from '../Advertise/Advertised';
+import Carousel from '../Carousel/Carousel';
+import ProductCategories from '../Category/ProductCategories';
 
 const Home = () => {
 
@@ -21,6 +22,7 @@ const Home = () => {
             </div>
             <Carousel></Carousel>
             <ProductCategories></ProductCategories>
+            <Advertised></Advertised>
         </div>
 
     );

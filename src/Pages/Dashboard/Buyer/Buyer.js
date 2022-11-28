@@ -1,6 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import toast from 'react-hot-toast';
+import { Link } from 'react-router-dom';
+import Loader from '../../../Shared/Loader/Loader';
 
 const Buyer = () => {
 
@@ -29,6 +31,10 @@ const Buyer = () => {
                     toast.success(`${product?.title} deleted successfully`);
                 }
             })
+    }
+
+    if (isLoading) {
+        return <Loader></Loader>
     }
 
     // console.log(products)
@@ -74,7 +80,12 @@ const Buyer = () => {
                                     {product?.title}
                                 </td>
                                 <td>{product?.price}</td>
-                                <td></td>
+                                <th>
+                                    {
+                                        product?.paid ? <button className="text-primary">paid</button> :
+                                            <Link to={`/dashboard/payment/${product?._id}`} className="btn btn-primary btn-xs">pay</Link>
+                                    }
+                                </th>
                                 <th>
                                     <button onClick={() => handleDeleteProduct(product)} className="btn btn-error btn-xs">Delete</button>
                                 </th>

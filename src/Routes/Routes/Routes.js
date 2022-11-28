@@ -6,7 +6,7 @@ import Admin from "../../Pages/Dashboard/Admin/Admin/Admin";
 import Buyer from "../../Pages/Dashboard/Buyer/Buyer";
 import Seller from "../../Pages/Dashboard/Seller/Seller/Seller";
 import ErrorPage from "../../Shared/ErrorPage/ErrorPage";
-import Home from "../../Pages/Home/Home";
+import Home from "../../Pages/Home/Home/Home";
 import LogIn from "../../Pages/LogIn/LogIn";
 import SignUp from "../../Pages/SignUp/SignUp";
 import AllProducts from "../../Pages/AllProducts/AllProducts";
@@ -15,6 +15,7 @@ import Product from "../../Pages/Product/Product";
 import Products from "../../Pages/Dashboard/Seller/Products/Products";
 import AllSeller from "../../Pages/Dashboard/Admin/AllSeller/AllSeller";
 import AllBuyer from "../../Pages/Dashboard/Admin/AllBuyer/AllBuyer";
+import Payment from "../../Pages/Dashboard/Payment/Payment";
 
 const router = createBrowserRouter([
     {
@@ -53,6 +54,11 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard',
                 element: <Buyer></Buyer>
+            },
+            {
+                path: '/dashboard/payment/:title',
+                element: <Payment></Payment>,
+                // loader: ({ params }) => fetch(`http://localhost:5000/productCart/${params.title}`)
             },
             {
                 path: '/dashboard/seller',

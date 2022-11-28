@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../../context/AuthProvider';
+import Loader from '../../../../Shared/Loader/Loader';
 
 const AddProduct = () => {
 
@@ -93,7 +94,7 @@ const AddProduct = () => {
     }
 
     if (isLoading) {
-        return <progress className="progress w-56"></progress>
+        return <Loader></Loader>
     }
 
 

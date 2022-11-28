@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
+import Loader from '../../Shared/Loader/Loader';
 import BuyModal from '../BuyModal/BuyModal';
 import Product from '../Product/Product';
 
@@ -15,6 +16,10 @@ const AllProducts = () => {
     // console.log(products);
 
     // const { title, img, product_type } = products;
+
+    if (loading) {
+        return <Loader></Loader>
+    }
 
     return (
         <div className=''>
