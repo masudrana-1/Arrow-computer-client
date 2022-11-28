@@ -1,8 +1,41 @@
 import React from 'react';
+import toast from 'react-hot-toast';
 
 const Product = ({ product, setSelectedProduct }) => {
 
-    const { title, img, location, original_price, resale_price, seller_name, post_time, years_of_use, details } = product;
+    const { title, img, location, original_price, product_type, resale_price, seller_name, post_time, years_of_use, details } = product;
+
+
+    const handleWishList = () => {
+        const addToWishlist = {
+            title: title,
+            price: resale_price,
+            img: img,
+            product_type: product_type
+        }
+
+        fetch('http://localhost:5000/wishlist', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(addToWishlist)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+
+                if (data.acknowledged) {
+                    toast.success('Added to Wishlist successfully');
+
+                }
+            })
+    }
+
+
+
+
+
 
     return (
         <div className="card card-side bg-base-100 h-[500px] shadow-xl my-5 ">
@@ -18,6 +51,7 @@ const Product = ({ product, setSelectedProduct }) => {
                 <p className='text-lg'>Seller: {seller_name}</p>
                 <p className='text-lg'>Time: {post_time}</p>
                 <div className="card-actions justify-end">
+                    <button onClick={handleWishList} className='btn btn-primary'>Add to wishlist</button>
                     <label htmlFor="buyModal" className="btn"
                         onClick={() => setSelectedProduct(product)}
                     >

@@ -2,9 +2,9 @@ import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
-import Loader from '../../../Shared/Loader/Loader';
+import Loader from '../../../../Shared/Loader/Loader';
 
-const Buyer = () => {
+const MyOrder = () => {
 
 
     const { data: products = [], refetch, isLoading } = useQuery({
@@ -99,4 +99,4 @@ const Buyer = () => {
     );
 };
 
-export default Buyer;
+export default MyOrder;

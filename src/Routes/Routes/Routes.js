@@ -3,7 +3,7 @@ import DashboardLayout from "../../Layout/DashboardLayout";
 import Main from "../../Layout/Main";
 import Blogs from "../../Pages/Blogs/Blogs";
 import Admin from "../../Pages/Dashboard/Admin/Admin/Admin";
-import Buyer from "../../Pages/Dashboard/Buyer/Buyer";
+import MyOrder from "../../Pages/Dashboard/Buyer/MyOrder/MyOrder";
 import Seller from "../../Pages/Dashboard/Seller/Seller/Seller";
 import ErrorPage from "../../Shared/ErrorPage/ErrorPage";
 import Home from "../../Pages/Home/Home/Home";
@@ -11,11 +11,12 @@ import LogIn from "../../Pages/LogIn/LogIn";
 import SignUp from "../../Pages/SignUp/SignUp";
 import AllProducts from "../../Pages/AllProducts/AllProducts";
 import AddProduct from "../../Pages/Dashboard/Seller/AddProducts/AddProduct";
-import Product from "../../Pages/Product/Product";
 import Products from "../../Pages/Dashboard/Seller/Products/Products";
 import AllSeller from "../../Pages/Dashboard/Admin/AllSeller/AllSeller";
 import AllBuyer from "../../Pages/Dashboard/Admin/AllBuyer/AllBuyer";
 import Payment from "../../Pages/Dashboard/Payment/Payment";
+import Buyer from "../../Pages/Dashboard/Buyer/Buyer/Buyer";
+import Wishlist from "../../Pages/Dashboard/Buyer/Wishlist/Wishlist";
 
 const router = createBrowserRouter([
     {
@@ -54,6 +55,14 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard',
                 element: <Buyer></Buyer>
+            },
+            {
+                path: '/dashboard/buyer/order',
+                element: <MyOrder></MyOrder>
+            },
+            {
+                path: '/dashboard/buyer/wishlist',
+                element: <Wishlist></Wishlist>
             },
             {
                 path: '/dashboard/payment/:title',
