@@ -20,6 +20,9 @@ const Wishlist = () => {
         }
     })
 
+
+    // console.log(products)
+
     const handleDeleteProduct = product => {
         fetch(`http://localhost:5000/wishlist/${product?._id}`, {
             method: 'DELETE'
@@ -29,6 +32,8 @@ const Wishlist = () => {
         })
             .then(res => res.json())
             .then(data => {
+
+                console.log(data);
                 if (data.deletedCount > 0) {
                     refetch();
                     toast.success(`${product?.title} deleted successfully`);

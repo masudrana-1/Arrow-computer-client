@@ -16,16 +16,14 @@ const DashboardLayout = () => {
 
 
                 </div>
-                <div className="drawer-side">
+                <div className="drawer-side ">
                     <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
-                    <ul className="menu p-4 w-80 text-base-content">
+                    <ul className="menu p-4 w-80 text-base-content bg-white">
                         {/* <!-- Sidebar content here --> */}
                         <li><Link className='text-lg' to='/dashboard/buyer'>Buyer</Link></li>
                         <li><Link className='text-lg' to='/dashboard/seller'>Seller</Link></li>
                         <li><Link className='text-lg' to='/dashboard/admin'>Admin</Link></li>
-
                     </ul>
-
                 </div>
             </div>
             <Footer></Footer>

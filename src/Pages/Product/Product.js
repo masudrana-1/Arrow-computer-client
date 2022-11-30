@@ -1,17 +1,22 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
+import { AuthContext } from '../../context/AuthProvider';
 
-const Product = ({ product, setSelectedProduct }) => {
+const Product = ({ product, setSelectedProduct, setOpenModal }) => {
 
-    const { title, img, location, original_price, product_type, resale_price, seller_name, post_time, years_of_use, details } = product;
+    const { user } = useContext(AuthContext);
+
+    const { title, _id, img, location, original_price, product_type, resale_price, seller_name, post_time, years_of_use, details } = product;
 
 
     const handleWishList = () => {
         const addToWishlist = {
             title: title,
+            product_id: _id,
             price: resale_price,
             img: img,
-            product_type: product_type
+            product_type: product_type,
+            email: user?.email
         }
 
         fetch('http://localhost:5000/wishlist', {
@@ -23,7 +28,7 @@ const Product = ({ product, setSelectedProduct }) => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                // console.log(data);
 
                 if (data.acknowledged) {
                     toast.success('Added to Wishlist successfully');
@@ -34,13 +39,18 @@ const Product = ({ product, setSelectedProduct }) => {
 
 
 
-
+    const handleByModal = (product) => {
+        setOpenModal(true);
+        setSelectedProduct(product)
+    }
 
 
     return (
-        <div className="card card-side bg-base-100 h-[500px] shadow-xl my-5 ">
+        <div className="card card-side flex flex-col lg:flex-row md:flex-row bg-base-100 lg:h-[500px]  shadow-xl my-5 ">
             {/* <figure><img src={img} alt="Movie" /></figure> */}
-            <img className='w-[500px] rounded-xl' src={img} alt="" />
+            <div>
+                <img className='lg:w-[500px] w-full  h-full rounded-xl' src={img} alt="" />
+            </div>
             <div className="card-body">
                 <h2 className="card-title">{title}</h2>
                 <p>Details: {details}</p>
@@ -53,7 +63,8 @@ const Product = ({ product, setSelectedProduct }) => {
                 <div className="card-actions justify-end">
                     <button onClick={handleWishList} className='btn btn-primary'>Add to wishlist</button>
                     <label htmlFor="buyModal" className="btn"
-                        onClick={() => setSelectedProduct(product)}
+                        onClick={() => handleByModal(product)}
+
                     >
                         Buy Now
                     </label>

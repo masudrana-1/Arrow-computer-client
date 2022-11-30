@@ -22,7 +22,7 @@ const MyOrder = () => {
 
 
     const handleDeleteProduct = product => {
-        fetch(`http://localhost:5000/productCart/${product?.title}`, {
+        fetch(`http://localhost:5000/productCart/${product?._id}`, {
             method: 'DELETE'
             // headers: {
             //     authorization: `bearer ${localStorage.getItem('accessToken')}`

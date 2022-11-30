@@ -13,7 +13,7 @@ const AddProduct = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
 
     // const imgHostingKey = process.env.REACT_APP_img_hosting_key;
-    const imgHostingKey = "24bc95d0ef3bcdb20b0506314b5bbc84";
+    const imgHostingKey = process.env.REACT_APP_img_hosting_key;
 
     // console.log(imgHostingKey);
 

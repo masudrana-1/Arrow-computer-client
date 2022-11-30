@@ -31,6 +31,22 @@ const AllSeller = () => {
             })
     }
 
+    const handleVerify = (id) => {
+        fetch(`http://localhost:5000/users/seller/${id}`, {
+            method: "PUT",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify()
+        })
+            .then(res => res.json())
+            .then(data => {
+                // console.log(data);
+                toast.success('Verified successfully');
+            })
+
+    }
+
 
     if (isLoading) {
         return <Loader></Loader>
@@ -47,6 +63,8 @@ const AllSeller = () => {
                             <th></th>
                             <th>Name</th>
                             <th>Email</th>
+                            <th>Verified status</th>
+                            <th></th>
                             <th></th>
                         </tr>
                     </thead>
@@ -57,6 +75,14 @@ const AllSeller = () => {
                                 <th>{i + 1}</th>
                                 <td>{seller?.name}</td>
                                 <td>{seller?.email}</td>
+                                <th>
+                                    {
+                                        (seller?.verify) && <button className="btn btn-primary btn-xs">verified</button>
+                                    }
+                                </th>
+                                <th>
+                                    <button onClick={() => handleVerify(seller._id)} className="btn btn-error btn-xs">verify</button>
+                                </th>
                                 <th>
                                     <button onClick={() => handleDeleteSeller(seller)} className="btn btn-error btn-xs">Delete</button>
                                 </th>

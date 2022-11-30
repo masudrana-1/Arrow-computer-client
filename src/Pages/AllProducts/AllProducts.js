@@ -12,6 +12,8 @@ const AllProducts = () => {
 
     const [seletedProduct, setSelectedProduct] = useState(null);
 
+    const [openModal, setOpenModal] = useState(true);
+
 
     const products = useLoaderData();
     // console.log(products);
@@ -28,23 +30,26 @@ const AllProducts = () => {
                 {
                     products.map(product => <Product key={product._id}
                         setSelectedProduct={setSelectedProduct}
+                        setOpenModal={setOpenModal}
                         product={product}
                     ></Product>)
                 }
             </div>
 
             {
-                <BuyModal
+                openModal &&
+                < BuyModal
                     user={user}
                     product={seletedProduct}
                     setSelectedProduct={setSelectedProduct}
                     loading={loading}
-                >
+                    setOpenModal={setOpenModal}
+                />
 
-                </BuyModal>
+
             }
 
-        </div>
+        </div >
     );
 };
 

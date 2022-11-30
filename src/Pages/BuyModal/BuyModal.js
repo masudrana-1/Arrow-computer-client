@@ -2,7 +2,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 
-const BuyModal = ({ user, product, loading, setSelectedProduct }) => {
+const BuyModal = ({ user, product, loading, setOpenModal, setSelectedProduct }) => {
 
 
     const { register, formState: { errors }, handleSubmit } = useForm();
@@ -16,7 +16,8 @@ const BuyModal = ({ user, product, loading, setSelectedProduct }) => {
             date: data.date,
             title: product.title,
             price: product.resale_price,
-            img: product?.img
+            img: product?.img,
+            product_id: product?._id
         }
 
         fetch('http://localhost:5000/productCart', {
@@ -28,10 +29,11 @@ const BuyModal = ({ user, product, loading, setSelectedProduct }) => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                // console.log(data);
 
                 if (data.acknowledged) {
                     setSelectedProduct(null);
+                    setOpenModal(false);
                     toast.success('Booking Confirm, please go to order page and payment for this product');
                     // refetch();
                 }
@@ -109,7 +111,7 @@ const BuyModal = ({ user, product, loading, setSelectedProduct }) => {
                                 {/* error message  */}
                                 {errors.price && <p className='text-red-500'>{errors.price?.message}</p>}
                             </div>
-                            <input className='btn btn-primary w-full mt-4' value="buy" type="submit" />
+                            <button className='btn btn-primary w-full mt-4' value="buy" type="submit">Buy</button>
                         </form>
                     </div>
                 </div>

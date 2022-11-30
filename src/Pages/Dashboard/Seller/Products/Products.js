@@ -8,7 +8,7 @@ const Products = () => {
 
     const { user } = useContext(AuthContext);
 
-    const url = `http://localhost:5000/products${user?.email}`
+    const url = `http://localhost:5000/products?email=${user?.email}`
 
     const { data: products = [], refetch, isLoading } = useQuery({
         queryKey: ['products'],
@@ -21,33 +21,14 @@ const Products = () => {
 
 
     const handleDeleteProduct = product => {
-        // console.log(doctor)
-        fetch(`http://localhost:5000/products/${product?.title}`, {
+        fetch(`http://localhost:5000/products/${product?._id}`, {
             method: 'DELETE'
-            // headers: {
-            //     authorization: `bearer ${localStorage.getItem('accessToken')}`
-            // }
-        })
-            .then(res => res.json())
-            .then(data => {
-                // console.log(data)
-                if (data.deletedCount > 0) {
-                    refetch();
-                    toast.success(`${product?.product_title} deleted successfully`);
-                }
-            })
-
-        fetch(`http://localhost:5000/productCart/${product?.title}`, {
-            method: 'DELETE'
-            // headers: {
-            //     authorization: `bearer ${localStorage.getItem('accessToken')}`
-            // }
         })
             .then(res => res.json())
             .then(data => {
                 if (data.deletedCount > 0) {
                     refetch();
-                    // toast.success(`${product?.title} deleted successfully`);
+                    toast.success(`${product?.title} deleted successfully`);
                 }
             })
 
@@ -63,26 +44,25 @@ const Products = () => {
             resale_price: product.resale_price,
             product_type: product.product_type,
             details: product.details,
-            post_time: product.post_time
+            post_time: product.post_time,
+            product_id: product._id
         }
 
-        // console.log(advertise)
 
         fetch('http://localhost:5000/advertise', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
-                // authorization: `bearer ${localStorage.getItem('accessToken')}`
             },
             body: JSON.stringify(advertise)
         })
             .then(res => res.json())
             .then(result => {
-                console.log(result);
+                // console.log(result);
                 toast.success(`${product.title} is advertise successfully`);
-                // navigate('/dashboard/seller/products');
             })
     }
+
 
 
     if (isLoading) {
@@ -92,11 +72,6 @@ const Products = () => {
     return (
         <div>
             <h1 className='text-4xl font-bold text-center mb-6'>All Products</h1>
-            {/* <div>
-                {
-                    products.map(product => <Product key={product._id} product={product}></Product>)
-                }
-            </div> */}
             <div>
                 <div className="overflow-x-auto w-full">
                     <table className="table w-full">
@@ -139,7 +114,6 @@ const Products = () => {
                                         </span>
                                     </td>
                                     <td>{product?.product_type}</td>
-
                                     <th>
                                         <button onClick={() => handleAdvertise(product)} className="btn btn-primary btn-xs">Advertise</button>
                                     </th>

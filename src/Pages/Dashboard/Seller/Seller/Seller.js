@@ -10,9 +10,6 @@ const Seller = () => {
             <div>
                 <Link className='btn btn-ghost mb-3' to='/dashboard/seller/products'>My products</Link>
             </div>
-            <div>
-                <Link className='btn btn-ghost mb-3'>My buyers</Link>
-            </div>
         </div>
     );
 };
