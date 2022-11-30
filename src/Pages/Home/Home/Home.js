@@ -3,6 +3,7 @@ import { AuthContext } from '../../../context/AuthProvider';
 import Advertised from '../Advertise/Advertised';
 import Carousel from '../Carousel/Carousel';
 import ProductCategories from '../Category/ProductCategories';
+import Contact from '../Contact/Contact';
 
 const Home = () => {
 
@@ -23,6 +24,7 @@ const Home = () => {
             <Carousel></Carousel>
             <ProductCategories></ProductCategories>
             <Advertised></Advertised>
+            <Contact></Contact>
         </div>
 
     );

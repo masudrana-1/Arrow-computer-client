@@ -12,7 +12,7 @@ const Payment = () => {
 
     const { title, price } = product;
 
-    console.log(product)
+    // console.log(product)
 
     return (
         <div>
