@@ -39,7 +39,7 @@ const router = createBrowserRouter([
             {
                 path: '/products/:product_type',
                 element: <PrivateRoute><AllProducts></AllProducts></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/products/${params.product_type}`)
+                loader: ({ params }) => fetch(`https://arrow-computer-server.vercel.app/products/${params.product_type}`)
             },
             {
                 path: '/login',
@@ -71,7 +71,7 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/payment/:id',
                 element: <Payment></Payment>,
-                loader: ({ params }) => fetch(`http://localhost:5000/productCart/${params.id}`)
+                loader: ({ params }) => fetch(`https://arrow-computer-server.vercel.app/productCart/${params.id}`)
             },
             {
                 path: '/dashboard/seller',

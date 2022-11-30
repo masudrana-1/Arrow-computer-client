@@ -8,7 +8,7 @@ const AllBuyer = () => {
     // const [buyers, setBuyers] = useState();
 
     // useEffect(() => {
-    //     fetch('http://localhost:5000/users/Buyer')
+    //     fetch('https://arrow-computer-server.vercel.app/users/Buyer')
     //         .then(res => res.json())
     //         .then(data => setBuyers(data))
     // }, [])
@@ -16,7 +16,7 @@ const AllBuyer = () => {
     const { data: buyers = [], refetch, isLoading } = useQuery({
         queryKey: ['buyers'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/users/Buyer`);
+            const res = await fetch(`https://arrow-computer-server.vercel.app/users/Buyer`);
             const data = await res.json();
             return data
         }
@@ -24,7 +24,7 @@ const AllBuyer = () => {
 
 
     const handleDeleteBuyer = buyer => {
-        fetch(`http://localhost:5000/users/${buyer?._id}`, {
+        fetch(`https://arrow-computer-server.vercel.app/users/${buyer?._id}`, {
             method: 'DELETE'
             // headers: {
             //     authorization: `bearer ${localStorage.getItem('accessToken')}`

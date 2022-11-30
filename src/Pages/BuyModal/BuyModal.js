@@ -20,7 +20,7 @@ const BuyModal = ({ user, product, loading, setOpenModal, setSelectedProduct }) 
             product_id: product?._id
         }
 
-        fetch('http://localhost:5000/productCart', {
+        fetch('https://arrow-computer-server.vercel.app/productCart', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

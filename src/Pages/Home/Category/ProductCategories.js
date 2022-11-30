@@ -1,20 +1,23 @@
 // import { useQuery } from '@tanstack/react-query';
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
+import Loader from '../../../Shared/Loader/Loader';
 import Category from './Category';
 
 const ProductCategories = () => {
 
-    const { data: categories = [] } = useQuery({
+    const { data: categories = [], isLoading } = useQuery({
         queryKey: ['categories'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/categories');
+            const res = await fetch('https://arrow-computer-server.vercel.app/categories');
             const data = await res.json();
             return data;
         }
     });
 
-
+    if (isLoading) {
+        return <Loader></Loader>
+    }
 
     return (
         <div className='my-10'>

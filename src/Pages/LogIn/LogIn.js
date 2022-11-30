@@ -69,7 +69,7 @@ const LogIn = () => {
     const saveUserByGoogle = (name, email) => {
         const user = { name, email, role: "Buyer" };
 
-        fetch('http://localhost:5000/users', {
+        fetch('https://arrow-computer-server.vercel.app/users', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

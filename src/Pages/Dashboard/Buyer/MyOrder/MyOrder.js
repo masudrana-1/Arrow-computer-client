@@ -9,7 +9,7 @@ const MyOrder = () => {
 
     const { user } = useContext(AuthContext);
 
-    const url = `http://localhost:5000/productCart?email=${user?.email}`
+    const url = `https://arrow-computer-server.vercel.app/productCart?email=${user?.email}`
 
     const { data: products = [], refetch, isLoading } = useQuery({
         queryKey: ['products'],
@@ -22,7 +22,7 @@ const MyOrder = () => {
 
 
     const handleDeleteProduct = product => {
-        fetch(`http://localhost:5000/productCart/${product?._id}`, {
+        fetch(`https://arrow-computer-server.vercel.app/productCart/${product?._id}`, {
             method: 'DELETE'
             // headers: {
             //     authorization: `bearer ${localStorage.getItem('accessToken')}`

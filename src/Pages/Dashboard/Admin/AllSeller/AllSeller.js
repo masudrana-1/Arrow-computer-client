@@ -8,7 +8,7 @@ const AllSeller = () => {
     const { data: sellers = [], refetch, isLoading } = useQuery({
         queryKey: ['sellers'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/users/Seller`);
+            const res = await fetch(`https://arrow-computer-server.vercel.app/users/Seller`);
             const data = await res.json();
             return data
         }
@@ -16,7 +16,7 @@ const AllSeller = () => {
 
 
     const handleDeleteSeller = seller => {
-        fetch(`http://localhost:5000/users/${seller?._id}`, {
+        fetch(`https://arrow-computer-server.vercel.app/users/${seller?._id}`, {
             method: 'DELETE'
             // headers: {
             //     authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -32,7 +32,7 @@ const AllSeller = () => {
     }
 
     const handleVerify = (id) => {
-        fetch(`http://localhost:5000/users/seller/${id}`, {
+        fetch(`https://arrow-computer-server.vercel.app/users/seller/${id}`, {
             method: "PUT",
             headers: {
                 'content-type': 'application/json'

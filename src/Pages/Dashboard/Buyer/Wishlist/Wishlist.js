@@ -9,7 +9,7 @@ const Wishlist = () => {
 
     const { user } = useContext(AuthContext);
 
-    const url = `http://localhost:5000/wishlist?email=${user?.email}`
+    const url = `https://arrow-computer-server.vercel.app/wishlist?email=${user?.email}`
 
     const { data: products = [], refetch, isLoading } = useQuery({
         queryKey: ['products'],
@@ -24,7 +24,7 @@ const Wishlist = () => {
     // console.log(products)
 
     const handleDeleteProduct = product => {
-        fetch(`http://localhost:5000/wishlist/${product?._id}`, {
+        fetch(`https://arrow-computer-server.vercel.app/wishlist/${product?._id}`, {
             method: 'DELETE'
             // headers: {
             //     authorization: `bearer ${localStorage.getItem('accessToken')}`
