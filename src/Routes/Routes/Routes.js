@@ -20,6 +20,7 @@ import Wishlist from "../../Pages/Dashboard/Buyer/Wishlist/Wishlist";
 import BuyerRoute from "./BuyerRoute/BuyerRoute";
 import SellerRoute from "./SellerRoute/SellerRoute";
 import AdminRoute from "./AdminRoute/AdminRoute";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -37,7 +38,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/products/:product_type',
-                element: <AllProducts></AllProducts>,
+                element: <PrivateRoute><AllProducts></AllProducts></PrivateRoute>,
                 loader: ({ params }) => fetch(`http://localhost:5000/products/${params.product_type}`)
             },
             {
@@ -57,7 +58,7 @@ const router = createBrowserRouter([
         children: [
             {
                 path: '/dashboard/buyer',
-                element: <Buyer></Buyer>
+                element: <BuyerRoute><Buyer></Buyer></BuyerRoute>
             },
             {
                 path: '/dashboard/buyer/order',
@@ -74,7 +75,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/dashboard/seller',
-                element: <Seller></Seller>
+                element: <SellerRoute><Seller></Seller></SellerRoute>
             },
             {
                 path: '/dashboard/seller/addproduct',

@@ -56,6 +56,7 @@ const AddProduct = () => {
                     // console.log(imgData.data.url);
                     const product = {
                         seller_name: data.name,
+                        email: user?.email,
                         title: data.title,
                         img: imgData.data.url,
                         location: data.location,

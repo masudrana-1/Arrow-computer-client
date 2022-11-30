@@ -83,7 +83,8 @@ const SignUp = () => {
         googleSignIn()
             .then(result => {
                 const user = result.user;
-                console.log(user);
+                // console.log(user);
+                saveUserByGoogle(user.displayName, user.email);
                 toast.success("SignUp successfully");
                 navigate('/');
             })
@@ -92,22 +93,28 @@ const SignUp = () => {
             })
     }
 
-    // ********************************************************************
-    // atar bodole custom hook use kora hoice 
-    // jwt token 
-    // const getUserToken = email => {
-    //     fetch(`http://localhost:5000/jwt?email=${email}`)
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             if (data.accessToken) {
 
-    //                 // local Storage er moddhe jwt token set korbe 
-    //                 localStorage.setItem('accessToken', data.accessToken);
-    //                 navigate('/');
-    //             }
-    //         })
-    // }
-    // *****************************************************************
+    const saveUserByGoogle = (name, email) => {
+        const user = { name, email, role: "Buyer" };
+
+        fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(d => {
+
+                if (d.acknowledged) {
+                    setCreatedUserEmail(user.email);
+                }
+            })
+    }
+
+
+
     return (
         <div className='h-[600px] flex justify-center items-center'>
             <div className='w-2/6 p-7'>

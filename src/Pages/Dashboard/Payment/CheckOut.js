@@ -7,6 +7,8 @@ const CheckOut = ({ product }) => {
 
     const { price, email, name, _id } = product;
 
+    console.log(price, product);
+
     const [cardError, setCardError] = useState('');
     const [success, setSuccess] = useState('');
     const [processing, setProcessing] = useState(false);

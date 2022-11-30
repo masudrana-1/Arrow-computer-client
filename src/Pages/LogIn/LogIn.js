@@ -56,14 +56,35 @@ const LogIn = () => {
         googleSignIn()
             .then(result => {
                 const user = result.user;
-                console.log(user);
-                toast.success("SignUp successfully");
+                // console.log(user);
+                saveUserByGoogle(user.displayName, user.email);
+                toast.success("Login successfully");
                 navigate(from, { replace: true });
             })
             .catch(error => {
                 console.log(error);
             })
     }
+
+    const saveUserByGoogle = (name, email) => {
+        const user = { name, email, role: "Buyer" };
+
+        fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(d => {
+
+                if (d.acknowledged) {
+                    setLoginUserEmail(user.email);
+                }
+            })
+    }
+
 
     return (
         <div className='h-[600px] flex justify-center items-center'>
