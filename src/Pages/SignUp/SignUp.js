@@ -180,12 +180,12 @@ const SignUp = () => {
                             <p className='text-red-500'>{signUpError}</p>
                         }
                     </div>
-                    <input className='btn btn-primary w-full' value="Login" type="submit" />
+                    <input className='btn btn-primary w-full shadow-lg mb-2 shadow-cyan-500/50' value="Login" type="submit" />
                 </form>
                 <p>Already have an <Link to="/login" className='text-primary'>Please Login</Link></p>
                 <div className="divider">OR</div>
 
-                <button onClick={signInWithGoogle} className='btn btn-outline w-full'>CONTINUE WITH GOOGLE</button>
+                <button onClick={signInWithGoogle} className='btn btn-outline w-full shadow-lg shadow-red-500/50'>CONTINUE WITH GOOGLE</button>
             </div>
         </div>
     );

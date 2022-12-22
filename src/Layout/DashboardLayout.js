@@ -18,11 +18,11 @@ const DashboardLayout = () => {
                 </div>
                 <div className="drawer-side ">
                     <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
-                    <ul className="menu p-4 w-80 text-base-content bg-white">
+                    <ul className="menu p-4 w-80 text-base-content bg-white text-center">
                         {/* <!-- Sidebar content here --> */}
-                        <li><Link className='text-lg' to='/dashboard/buyer'>Buyer</Link></li>
-                        <li><Link className='text-lg' to='/dashboard/seller'>Seller</Link></li>
-                        <li><Link className='text-lg' to='/dashboard/admin'>Admin</Link></li>
+                        <li><Link className='text-lg text-center bg-orange-500 shadow-lg shadow-red-500/100 mb-3' to='/dashboard/buyer'>Buyer</Link></li>
+                        <li><Link className='text-lg bg-orange-500 text-center mb-3 shadow-lg shadow-red-500/100' to='/dashboard/seller'>Seller</Link></li>
+                        <li><Link className='text-lg bg-orange-500  text-center mb-2 shadow-lg shadow-red-500/100' to='/dashboard/admin'>Admin</Link></li>
                     </ul>
                 </div>
             </div>

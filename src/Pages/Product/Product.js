@@ -46,7 +46,7 @@ const Product = ({ product, setSelectedProduct, setOpenModal }) => {
 
 
     return (
-        <div className="card card-side flex flex-col lg:flex-row md:flex-row bg-base-100 lg:h-[500px]  shadow-xl my-5 ">
+        <div className="card card-side flex flex-col lg:flex-row md:flex-row bg-base-100 lg:h-[500px] shadow-lg shadow-red-500/50 my-5 ">
             {/* <figure><img src={img} alt="Movie" /></figure> */}
             <div>
                 <img className='lg:w-[500px] w-full  h-full rounded-xl' src={img} alt="" />
@@ -61,8 +61,8 @@ const Product = ({ product, setSelectedProduct, setOpenModal }) => {
                 <p className='text-lg'>Seller: {seller_name}</p>
                 <p className='text-lg'>Time: {post_time}</p>
                 <div className="card-actions justify-end">
-                    <button onClick={handleWishList} className='btn btn-primary'>Add to wishlist</button>
-                    <label htmlFor="buyModal" className="btn"
+                    <button onClick={handleWishList} className='btn btn-primary shadow-xl shadow-cyan-500/50'>Add to wishlist</button>
+                    <label htmlFor="buyModal" className="btn shadow-xl shadow-red-500/50 "
                         onClick={() => handleByModal(product)}
 
                     >

@@ -14,7 +14,7 @@ const Home = () => {
     return (
 
         <div>
-            <div className='text-lg text-center my-6'>
+            <div className='text-lg text-center my-6 text-cyan-700'>
                 {
                     user?.uid && <h1>
                         Hello "{user?.displayName ? user?.displayName : user?.email}" - Wellcome to Arrow Computer

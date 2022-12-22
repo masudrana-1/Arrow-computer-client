@@ -117,12 +117,12 @@ const LogIn = () => {
                             <p className='text-red-500'>{loginError}</p>
                         } */}
                     </div>
-                    <input className='btn btn-primary w-full' value="Log in" type="submit" />
+                    <input className='btn btn-primary w-full shadow-lg mb-2 shadow-cyan-500/50' value="Log in" type="submit" />
                 </form>
                 <p>New to Arrow Computer <Link to="/signup" className='text-primary'>Create a new account</Link></p>
                 <div className="divider">OR</div>
 
-                <button onClick={signInWithGoogle} className='btn btn-outline w-full'>CONTINUE WITH GOOGLE</button>
+                <button onClick={signInWithGoogle} className='btn btn-outline w-full shadow-lg shadow-red-500/50'>CONTINUE WITH GOOGLE</button>
             </div>
         </div>
     );
